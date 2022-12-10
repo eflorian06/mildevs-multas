@@ -25,7 +25,7 @@ public class ProgramaPrincipal {
 
         int opcao = 0;
 
-        while (opcao != 4) {
+        while (opcao != 9) {
             MenuPrincipal.menuPrincipal();
             opcao = teclado.nextInt();
             switch (opcao) {
@@ -83,7 +83,7 @@ public class ProgramaPrincipal {
                             MenuMultas.buscarMulta(multaDAO);
                             break;
                         case 4: // Excluir Multa
-                            MenuMultas.excluirMulta(multaDAO);
+                            MenuMultas.excluirMulta(multaDAO, condutorDAO, condutor, multa);
                             break;
                     }
                     break;

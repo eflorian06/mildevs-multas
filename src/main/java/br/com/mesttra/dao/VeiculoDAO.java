@@ -30,21 +30,21 @@ public class VeiculoDAO {
         return em.find(Veiculo.class, placa);
     }
 
-    public boolean addMultas(String placa, Multa multa) {
-
-        Veiculo veiculo = this.buscaVeiculo(placa);
-
-        if (veiculo != null) {
-            this.em.getTransaction().begin();
-            veiculo.getMultas().add(multa);
-            this.em.getTransaction().commit();
-            return true;
-        }
-
-        return false;
-
-
-    }
+//    public boolean addMultas(String placa, Multa multa) {
+//
+//        Veiculo veiculo = this.buscaVeiculo(placa);
+//
+//        if (veiculo != null) {
+//            this.em.getTransaction().begin();
+//            veiculo.getMultas().add(multa);
+//            this.em.getTransaction().commit();
+//            return true;
+//        }
+//
+//        return false;
+//
+//
+//    }
 
     public boolean removeVeiculo(String placa) {
         Veiculo veiculo = this.buscaVeiculo(placa);

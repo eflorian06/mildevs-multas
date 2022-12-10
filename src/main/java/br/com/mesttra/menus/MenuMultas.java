@@ -52,7 +52,7 @@ public class MenuMultas {
         multaDAO.criaMulta(multa);
 
         Condutor infrator = veiculoMultado.getCondutor();
-        int pontosMulta = infrator.getPontuacao();
+        int pontosMulta = 0;
         pontosMulta += multa.getPontuacao();
         condutorDAO.atualizaCondutor(infrator, pontosMulta);
 
@@ -73,11 +73,18 @@ public class MenuMultas {
         System.out.println(multa);
     }
 
-    public static void excluirMulta(MultaDAO multaDAO) {
+    public static void excluirMulta(MultaDAO multaDAO, CondutorDAO condutorDAO, Condutor condutor, Multa multa) {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Digite o codigo da multa: ");
         int cod = teclado.nextInt();
         multaDAO.removeMulta(cod);
+
+        Condutor infrator = multa.getVeiculo().getCondutor();
+        int pontosMulta = 0;
+        pontosMulta -= multa.getPontuacao();
+        condutorDAO.atualizaCondutor(infrator, pontosMulta);
+
+
 
 
     }

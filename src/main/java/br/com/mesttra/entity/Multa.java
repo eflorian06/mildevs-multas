@@ -16,17 +16,17 @@ public class Multa {
     @Column(nullable = false)
     private int pontuacao;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "veiculo_placa", referencedColumnName = "placa")
     private Veiculo veiculo;
 
     @Override
     public String toString() {
         return "Multa{" +
-                "codigoMulta=" + codigoMulta +
-                ", valor=" + valor +
-                ", pontuacao=" + pontuacao +
-                ", veiculo=" + veiculo +
+                "\ncodigoMulta=" + getCodigoMulta() +
+                ", \nvalor=" + getValor() +
+                ", \npontuacao=" + getPontuacao() +
+                ", \nveiculo=" + veiculo.getPlaca() +
                 '}';
     }
 
@@ -61,4 +61,6 @@ public class Multa {
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
     }
+
+
 }

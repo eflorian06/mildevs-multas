@@ -76,12 +76,12 @@ public class Veiculo {
     @Override
     public String toString() {
         return "Veiculo{" +
-                "placa='" + placa + '\'' +
-                ", ano='" + ano + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", marca='" + marca + '\'' +
-                ", condutor=" + condutor +
-                ", multas=" + multas +
+                "\nplaca='" + getPlaca() + '\'' +
+                ", \nano='" + getAno() + '\'' +
+                ", \nmodelo='" + getModelo() + '\'' +
+                ", \nmarca='" + getMarca() + '\'' +
+                ", \ncondutor=" + condutor.getNroCnh() +
+                ", \nmultas=" + getMultas() +
                 '}';
     }
 }
