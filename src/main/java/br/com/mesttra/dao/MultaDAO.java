@@ -17,7 +17,7 @@ public class MultaDAO {
     public boolean criaMulta(Multa multa) {
 
         this.em.getTransaction().begin();
-        this.em.persist(multa);
+        this.em.merge(multa);
         this.em.getTransaction().commit();
 
         return true;

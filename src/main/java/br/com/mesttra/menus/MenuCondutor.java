@@ -47,21 +47,19 @@ public class MenuCondutor {
         List<Condutor> todosCondutores = condutorDAO.buscarTodosCondutores();
     }
 
-    public static void buscarCondutor() {
+    public static void buscarCondutor(Condutor condutor, CondutorDAO condutorDAO) {
         Scanner teclado = new Scanner(System.in);
-        CondutorDAO condutorDAO = new CondutorDAO();
-        Condutor condutor = new Condutor();
+
 
         System.out.println("Digite o numero da CNH: ");
         int numcnh = teclado.nextInt();
         Condutor condutorBusc = condutorDAO.buscaCondutor(numcnh);
-        System.out.println(condutor);
+        System.out.println(condutorBusc);
     }
 
-    public static void excluirCondutor() {
+    public static void excluirCondutor(Condutor condutor, CondutorDAO condutorDAO) {
         Scanner teclado = new Scanner(System.in);
-        CondutorDAO condutorDAO = new CondutorDAO();
-        Condutor condutor = new Condutor();
+
 
         System.out.println("Digite o numero da CNH: ");
         int nroCnh = teclado.nextInt();

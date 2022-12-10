@@ -6,6 +6,8 @@ import br.com.mesttra.entity.Veiculo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 
+import java.util.List;
+
 public class VeiculoDAO {
 
     private EntityManager em;
@@ -25,7 +27,7 @@ public class VeiculoDAO {
     }
 
     public Veiculo buscaVeiculo(String placa) {
-        return this.em.find(Veiculo.class, placa);
+        return em.find(Veiculo.class, placa);
     }
 
     public boolean addMultas(String placa, Multa multa) {
@@ -55,6 +57,10 @@ public class VeiculoDAO {
         }
 
         return false;
+    }
+
+    public List<Veiculo> todosVeiculos() {
+        return this.em.createQuery("SELECT v FROM Veiculo v", Veiculo.class).getResultList();
     }
 
 

@@ -5,6 +5,7 @@ import br.com.mesttra.dao.VeiculoDAO;
 import br.com.mesttra.entity.Condutor;
 import br.com.mesttra.entity.Veiculo;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuVeiculo {
@@ -20,16 +21,11 @@ public class MenuVeiculo {
         System.out.println("-----MENU VEÍCULO-----");
     }
 
-    public static void cadastrarVeiculo() {
+    public static void cadastrarVeiculo(VeiculoDAO veiculoDAO, Veiculo veiculo, CondutorDAO condutorDAO, Condutor condutor) {
         Scanner teclado = new Scanner(System.in);
 
         System.out.println("-----CADASTRAR VEÍCULO-----");
         System.out.println();
-
-        VeiculoDAO veiculoDAO = new VeiculoDAO();
-        Veiculo veiculo = new Veiculo();
-        Condutor condutor = new Condutor();
-        CondutorDAO condutorDAO = new CondutorDAO();
 
         System.out.println("Digite a placa do veículo: ");
         veiculo.setPlaca(teclado.next());
@@ -54,4 +50,29 @@ public class MenuVeiculo {
 
 
     }
+
+    public static void listarVeiculo(VeiculoDAO veiculoDAO) {
+
+        List<Veiculo> todosCarros = veiculoDAO.todosVeiculos();
+        for (Veiculo veiculosDB : todosCarros) {
+            System.out.println(veiculosDB);
+        }
+    }
+
+    public static void buscarVeiculo(Veiculo veiculo, VeiculoDAO veiculoDAO) {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Digite a placa do veículo: ");
+        String placa = teclado.next();
+        veiculo = veiculoDAO.buscaVeiculo(placa);
+        System.out.println(veiculo);
+    }
+
+    public static void excluirVeiculo(Veiculo veiculo, VeiculoDAO veiculoDAO) {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Digite a placa do veículo: ");
+        String placa = teclado.next();
+        veiculoDAO.removeVeiculo(placa);
+    }
+
+
 }

@@ -47,5 +47,16 @@ public class CondutorDAO {
         return false;
     }
 
+    public boolean atualizaCondutor(Condutor infrator, int pontosMulta) {
+        Condutor condutorAtualizado = this.buscaCondutorId(infrator.getNroCnh());
+        if (condutorAtualizado != null) {
+            this.em.getTransaction().begin();
+            condutorAtualizado.setPontuacao(condutorAtualizado.getPontuacao() + pontosMulta);
+            this.em.getTransaction().commit();
+            return true;
+        }
+        return false;
+    }
+
 
 }
