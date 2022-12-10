@@ -26,8 +26,8 @@ public class CondutorDAO {
         return em.find(Condutor.class, nroCnh);
     }
 
-    private Long buscaCondutorId(int nroCnh) {
-        return em.find(Condutor.class, nroCnh).getId();
+    private Condutor buscaCondutorId(int nroCnh) {
+        return em.find(Condutor.class, nroCnh);
     }
 
     public List<Condutor> buscarTodosCondutores() {
