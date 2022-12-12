@@ -18,7 +18,7 @@ public class Condutor {
     @Column(nullable = false)
     private int pontuacao = 0;
 
-    @OneToMany(mappedBy = "condutor")
+    @OneToMany(mappedBy = "condutor", cascade = CascadeType.ALL)
     private List<Veiculo> carros;
 
     public int getNroCnh() {
@@ -65,8 +65,12 @@ public class Condutor {
     }
     @Override
     public String toString() {
-        return "Condutor [Numero da CNH= " + getNroCnh() + ", orgaoEmissor= " + getOrgaoEmissor() + ", dataEmissao= " + getDataEmissao()
-                + ", pontuacao= " + getPontuacao() + "]";
+        return "Número da CNH= " + getNroCnh() + " " +
+                "\nOrgão emissor = " + getOrgaoEmissor() + "" +
+                "\nData de Emissao = " + getDataEmissao()
+                + ",\nPontuação = " + getPontuacao() + "pontos" +
+                "\nATENÇÃO: o condutor está a " + (20 - getPontuacao()) + " pontos de ser suspenso.";
+
     }
 
 }

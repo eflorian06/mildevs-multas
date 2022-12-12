@@ -75,13 +75,12 @@ public class Veiculo {
 
     @Override
     public String toString() {
-        return "Veiculo{" +
+        return "Informações do veículo:" +
                 "\nplaca='" + getPlaca() + '\'' +
                 ", \nano='" + getAno() + '\'' +
                 ", \nmodelo='" + getModelo() + '\'' +
                 ", \nmarca='" + getMarca() + '\'' +
                 ", \ncondutor=" + condutor.getNroCnh() +
-                ", \nmultas=" + getMultas() +
-                '}';
+                ", \nmultas=" + getMultas();
     }
 }

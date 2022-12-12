@@ -16,7 +16,9 @@ public class MenuVeiculo {
         System.out.println("2 - Listar Veículos");
         System.out.println("3 - Buscar Veículo");
         System.out.println("4 - Excluir Veículo");
-        System.out.println("5 - Voltar");
+        System.out.println("5 - Vender / Trocar de condutor");
+        System.out.println("6 - Consultar valor do IPVA");
+        System.out.println("7 - Voltar");
         System.out.println();
         System.out.println("-----MENU VEÍCULO-----");
     }
@@ -46,7 +48,13 @@ public class MenuVeiculo {
 
         veiculo.setCondutor(condutor);
 
-        veiculoDAO.criaVeiculo(veiculo);
+        boolean verifica = veiculoDAO.criaVeiculo(veiculo);
+
+        if (verifica) {
+            System.out.println("Veículo cadastrado com sucesso!");
+        } else {
+            System.out.println("Erro ao cadastrar veículo!");
+        }
 
 
     }
@@ -71,7 +79,39 @@ public class MenuVeiculo {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Digite a placa do veículo: ");
         String placa = teclado.next();
-        veiculoDAO.removeVeiculo(placa);
+        boolean verifica = veiculoDAO.removeVeiculo(placa);
+
+        if (verifica) {
+            System.out.println("Veículo excluído com sucesso!");
+        } else {
+            System.out.println("Erro ao excluir veículo!");
+        }
+
+    }
+
+    public static void transferirCondutor(Veiculo veiculo, VeiculoDAO veiculoDAO, CondutorDAO condutorDAO, Condutor condutor) {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Digite a placa do veículo: ");
+        String placa = teclado.next();
+        veiculo = veiculoDAO.buscaVeiculo(placa);
+        System.out.println("Digite a CNH do novo condutor: ");
+        int cnhCondutor = teclado.nextInt();
+        condutor = condutorDAO.buscaCondutor(cnhCondutor);
+        veiculo.setCondutor(condutor);
+        boolean verifica = veiculoDAO.atualizaVeiculo(veiculo);
+
+        if (verifica) {
+            System.out.println("Veículo transferido com sucesso!");
+        } else {
+            System.out.println("Erro ao transferir veículo!");
+        }
+    }
+
+    public static void consultaIpva (Scanner teclado) {
+        System.out.println("Digite o valor do veículo na tabela FIPE: ");
+        double valorFIPE = teclado.nextDouble();
+        double valorIpva = valorFIPE * 0.04;
+        System.out.println("O valor do IPVA é: R$ " + valorIpva);
     }
 
 

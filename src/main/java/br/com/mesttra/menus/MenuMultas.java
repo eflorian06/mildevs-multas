@@ -34,7 +34,7 @@ public class MenuMultas {
         System.out.println("Digite o valor da multa: ");
         multa.setValor(teclado.nextDouble());
 
-        System.out.println("Digite o valor da multa: ");
+        System.out.println("Digite a pontuação da multa: ");
         multa.setPontuacao(teclado.nextInt());
 
         System.out.println("Digite a placa do veiculo que foi multado: ");
@@ -54,7 +54,13 @@ public class MenuMultas {
         Condutor infrator = veiculoMultado.getCondutor();
         int pontosMulta = 0;
         pontosMulta += multa.getPontuacao();
-        condutorDAO.atualizaCondutor(infrator, pontosMulta);
+        boolean verificar = condutorDAO.atualizaCondutor(infrator, pontosMulta);
+
+        if (verificar) {
+            System.out.println("Multa cadastrada com sucesso!");
+        } else {
+            System.out.println("Erro ao cadastrar multa!");
+        }
 
     }
 
@@ -82,10 +88,13 @@ public class MenuMultas {
         Condutor infrator = multa.getVeiculo().getCondutor();
         int pontosMulta = 0;
         pontosMulta -= multa.getPontuacao();
-        condutorDAO.atualizaCondutor(infrator, pontosMulta);
+        boolean confere = condutorDAO.atualizaCondutor(infrator, pontosMulta);
 
-
-
+        if (confere) {
+            System.out.println("Multa excluida com sucesso!");
+        } else {
+            System.out.println("Erro ao excluir multa!");
+        }
 
     }
 }

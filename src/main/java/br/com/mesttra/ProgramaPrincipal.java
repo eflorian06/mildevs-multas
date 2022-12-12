@@ -45,6 +45,15 @@ public class ProgramaPrincipal {
                             MenuCondutor.buscarCondutor(condutor, condutorDAO);
                             break;
 
+                        case 4: // Excluir Condutor
+                            MenuCondutor.excluirCondutor(condutor, condutorDAO);
+                            break;
+
+                        case 5: // Consultar informações sobre rodízio
+                            MenuCondutor.consultaRodizioLicenc(teclado);
+                            break;
+
+
                     }
                     break;
                 case 2:
@@ -64,6 +73,15 @@ public class ProgramaPrincipal {
                         case 4: // Excluir Veículo
                             MenuVeiculo.excluirVeiculo(veiculo, veiculoDAO);
                             break;
+
+                        case 5: // Vender / Trocar de condutor
+                            MenuVeiculo.transferirCondutor(veiculo, veiculoDAO, condutorDAO, condutor);
+                            break;
+
+                        case 6: // Consultar o valor do IPVA
+                            MenuVeiculo.consultaIpva(teclado);
+                            break;
+
                     }
 
                     break;
@@ -87,7 +105,7 @@ public class ProgramaPrincipal {
                             break;
                     }
                     break;
-                case 4:
+                case 9:
                     System.out.println("Saindo...");
                     break;
                 default:

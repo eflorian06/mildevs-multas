@@ -64,4 +64,11 @@ public class VeiculoDAO {
     }
 
 
+    public boolean atualizaVeiculo(Veiculo veiculo) {
+        this.em.getTransaction().begin();
+        this.em.merge(veiculo);
+        this.em.getTransaction().commit();
+
+        return true;
+    }
 }

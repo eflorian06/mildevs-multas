@@ -22,12 +22,11 @@ public class Multa {
 
     @Override
     public String toString() {
-        return "Multa{" +
-                "\ncodigoMulta=" + getCodigoMulta() +
-                ", \nvalor=" + getValor() +
-                ", \npontuacao=" + getPontuacao() +
-                ", \nveiculo=" + veiculo.getPlaca() +
-                '}';
+        return
+                "\nCódigo da multa = " + getCodigoMulta() +
+                ", \nValor = R$ " + getValor() +
+                ", \nPontos = " + getPontuacao() +
+                ", \nVeículo = " + veiculo.getPlaca();
     }
 
     public int getCodigoMulta() {
