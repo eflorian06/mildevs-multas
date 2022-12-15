@@ -1,0 +1,38 @@
+Fetch
+
+Exitem 2 tipos de fetch(busca/carregamento) que podem ser adotados em nosso código, o primeiro deles (e também o padrão)
+é o Lazy, que consiste em carregar os objetos ou dados apenas quando eles forem ser utilizados, ou seja, sob demanda.
+Porém, ao contrário do que pode parecer, nem sempre o lazy é o melhor método para realizar os carregamentos, pois em casos 
+onde os objetos/dados serão totalmente utilizados ou utilizados com frequência, utilizar um carregamento lazy pode causar lentidão
+na execução do programa. 
+
+A fim de solucionar a lentidão causada ao carregar um dado diversas vezes, é possível utilizar o carregamento Eager, que consiste
+em carregar todos os dados mesmo que eles não sejam utilizados, porém, caso seja utilizado em casos onde os dados não serão utilizados
+com muita frequência, o eager pode causar uma lentidão desnecessária, visto que carregará todos os objetos de uma vez mesmo que
+não sejam utilizados.
+
+
+----
+
+Cascade:
+
+O cascade é uma forma de cascatear as operações realizadas em um objeto com todos os outros que estão relacionados, 
+como por exemplo: Após implementar o cascade remove em uma entidade, quando um objeto for removido, todos os outros
+objetos "filhos" também serão removidos.
+
+Para organizar e facilitar a implementação do cascade, foram criados 5 tipos de cascata, sendo eles:
+
+ALL - Todas as operações implmentadas na entidade "pai" também serão executados nos demais objetos relacionados;
+REMOVE - Remove a entidade "filho" quando o "pai" é removido;
+REFRESH - Atualiza as entidades com dados do banco quando o "pai" é atualizado;
+PERSIST- Persiste as entidades quando o "pai" sofrer um persist;
+MERGE- Atualiza e persiste as entidades "filho" mesmo que não tenham sido persistidas anteriormente.
+
+---
+
+Optional
+
+O optional é uma ótima ferramenta na elaboração das regras de negócio do nosso código, nesse caso, o optional diz ao código se aquele objeto que está
+sendo relacionado deve ou não obrigatoriamente existir.
+
+Para exemplificar, podemos usar o exemplo do sistema de multas, onde não é possivel criar um veículo sem um condutor (optional false), mas podemos criar um condutor sem um veículo (optional true/padrão).
